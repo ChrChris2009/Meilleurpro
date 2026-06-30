@@ -1,0 +1,14 @@
+{
+  "name": "minato-namikaze-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard Premium d'APIs par Chris st",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "axios": "^1.7.2"
+  }
+}
+
