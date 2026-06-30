@@ -1,0 +1,228 @@
+:root {
+    --bg-main: #0a0a0c;
+    --accent-color: #ffcc00; /* Jaune Éclair de Minato */
+    --accent-glow: rgba(255, 204, 0, 0.4);
+    --text-color: #ffffff;
+    --card-bg: rgba(20, 20, 25, 0.7);
+    --border-style: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    transition: background 0.8s ease-in-out;
+    overflow-x: hidden;
+}
+
+/* Éclairs en arrière-plan */
+.lightning-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: transparent;
+    opacity: 0;
+    animation: flash 10s infinite;
+}
+
+@keyframes flash {
+    0%, 95%, 98% { opacity: 0; }
+    96%, 99% { background: rgba(255, 255, 255, 0.08); opacity: 1; }
+    97% { background: rgba(255, 204, 0, 0.05); opacity: 1; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(10, 10, 12, 0.8);
+    border-bottom: var(--border-style);
+    backdrop-filter: blur(10px);
+}
+
+.author-name {
+    color: var(--accent-color);
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--card-bg);
+    border: var(--border-style);
+    border-radius: 16px;
+    padding: 25px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+/* Profil Auteur Animé */
+.profile-section {
+    margin: 40px 0;
+    animation: fadeInDown 1s ease;
+}
+
+.profile-avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    z-index: 2;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.profile-avatar:hover {
+    transform: rotate(360px) scale(1.1);
+}
+
+.avatar-glow {
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent-color), #ff5500);
+    z-index: 1;
+    filter: blur(10px);
+    animation: pulseGlow 3s infinite alternate;
+}
+
+/* Boutons Premium */
+button {
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color), #e6b800);
+    color: #000;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.btn-secret {
+    background: #333;
+    color: #fff;
+}
+
+.cat-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    margin-right: 10px;
+}
+
+.cat-btn.active, .cat-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+/* Grille des APIs */
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.api-card {
+    background: rgba(25, 25, 30, 0.8);
+    border: var(--border-style);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.api-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px var(--accent-glow);
+    border-color: var(--accent-color);
+}
+
+/* Formulaires & Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 6px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Terminal d'essai */
+.tester-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+pre {
+    background: #050507;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    max-height: 250px;
+    color: #00ff66;
+    border: 1px solid rgba(0, 255, 102, 0.2);
+}
+
+.hidden { display: none !important; }
+
+/* ANIMATIONS CSS */
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
