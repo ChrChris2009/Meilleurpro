@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minato Namikaze - API Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="lightning-bg"></div>
+
+    <audio id="bg-music" loop>
+        <source src="audio/bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <header>
+        <div class="logo-area animate-pop">
+            <h1>⚡ MINATO NAMIKAZE</h1>
+            <p>Créé par <span class="author-name">Chris st</span></p>
+        </div>
+        
+        <div class="controls">
+            <button id="toggle-music" class="btn-secondary animate-pulse"><i class="fas fa-music"></i></button>
+            <button id="admin-bg-btn" class="btn-primary"><i class="fas fa-image"></i> Changer Background</button>
+            <button id="secret-trigger-btn" class="btn-secret"><i class="fas fa-eye-slash"></i> Options Masquées</button>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="profile-section text-center">
+            <div class="profile-avatar-container">
+                <img src="https://images.alphacoders.com/605/605587.jpg" alt="Auteur Profil" id="author-img" class="profile-avatar">
+                <div class="avatar-glow"></div>
+            </div>
+            <h2 id="author-title">Chris st</h2>
+            <p id="author-bio">Développeur passionné & Créateur de solutions IA. Maître des éclairs de Konoha.</p>
+        </section>
+
+        <section id="secret-links-container" class="secret-links hidden glass-card">
+            <h3><i class="fas fa-link"></i> Réseaux & Contact</h3>
+            <div class="social-grid">
+                <a href="https://github.com" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://facebook.com" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://youtube.com" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://wa.me/yournumber" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="gmail-form">
+                <h4><i class="fas fa-envelope"></i> Nous contacter via Gmail</h4>
+                <input type="text" id="gmail-msg" placeholder="Écris ton message ici pour Chris st...">
+                <button onclick="sendGmail()" class="btn-primary">Envoyer</button>
+            </div>
+        </section>
+
+        <nav class="categories-nav">
+            <button class="cat-btn active" onclick="filterCategory('all')">Tout voir</button>
+            <button class="cat-btn" onclick="filterCategory('ai')"><i class="fas fa-brain"></i> Intelligence Artificielle</button>
+            <button class="cat-btn" onclick="filterCategory('download')"><i class="fas fa-download"></i> Téléchargement</button>
+        </nav>
+
+        <section class="api-grid" id="api-container">
+            </section>
+
+        <section class="tester-section glass-card animate-slide-up">
+            <h3><i class="fas fa-terminal"></i> Terminal d'Essai d'API (Temps Réel)</h3>
+            <div class="tester-grid">
+                <div class="tester-inputs">
+                    <label>URL de l'API :</label>
+                    <input type="text" id="test-url" placeholder="https://api.example.com/endpoint">
+                    
+                    <div class="row">
+                        <div>
+                            <label>Méthode :</label>
+                            <select id="test-method">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="runApiTest()" class="btn-test">⚡ Exécuter le Prompt / la Requête</button>
+                </div>
+                <div class="tester-output">
+                    <label>Résultat (JSON/Texte) :</label>
+                    <pre id="test-response">En attente d'exécution...</pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Tableau de Bord Premium Minato Namikaze. Tous droits réservés par <strong>Chris st</strong>.</p>
+    </footer>
+
+</body>
+</html>
+
